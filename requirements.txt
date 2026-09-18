@@ -1,0 +1,8 @@
+django>=4.2
+djangorestframework
+mysqlclient
+pymongo
+pandas
+numpy
+matplotlib
+scikit-learn

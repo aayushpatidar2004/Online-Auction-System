@@ -1,0 +1,87 @@
+{
+  "tomato_early_blight": {
+    "plant": "Tomato",
+    "disease_name": "Tomato Early Blight",
+    "scientific_name": "Alternaria solani",
+    "severity": "Moderate to High",
+    "symptoms": "Dark brown to black spots with concentric rings (target-like appearance) on older lower leaves. Leaves yellow and drop prematurely, exposing fruits to sunscald.",
+    "possible_causes": "High humidity, warm temperatures (24-29°C), splash dispersal from infected soil or plant debris, dense foliage hindering air circulation.",
+    "organic_management": "Remove and destroy infected lower leaves. Spray neem oil (5 ml/L) or copper-based organic fungicides (Bordeaux mixture 1%). Mulch around the base of plants to prevent soil splashing onto leaves.",
+    "chemical_management": "Apply Mancozeb 75% WP @ 2.5 g/L or Chlorothalonil 75% WP @ 2 g/L or Azoxystrobin 23% SC @ 1 ml/L at first sign of symptoms, repeating every 10-14 days.",
+    "prevention": "Practice 3-year crop rotation avoiding Solanaceae family (potato, eggplant, pepper). Use certified disease-free seeds and drip irrigation to keep foliage dry.",
+    "when_to_consult_expert": "Consult your local Krishi Vigyan Kendra (KVK) or Agriculture Extension Officer if more than 30% of the plant canopy is infected or if stem cankers appear."
+  },
+  "tomato_leaf_spot": {
+    "plant": "Tomato",
+    "disease_name": "Tomato Septoria Leaf Spot",
+    "scientific_name": "Septoria lycopersici",
+    "severity": "Moderate",
+    "symptoms": "Numerous circular water-soaked spots with dark margins and gray or tan centers on foliage. Tiny dark fruiting bodies (pycnidia) visible inside centers.",
+    "possible_causes": "Extended periods of wet, warm weather (20-25°C), high humidity, overhead irrigation splashing fungal spores.",
+    "organic_management": "Prune bottom 12 inches of leaves to improve airflow. Apply copper hydroxide fungicide or bio-agent Trichoderma viride @ 5 g/L.",
+    "chemical_management": "Spray Mancozeb @ 2 g/L or Zineb 75% WP @ 2.5 g/L. Always respect the 7-day pre-harvest interval before picking fruits.",
+    "prevention": "Stake plants upright, destroy infected crop residues after harvest, avoid working in tomato fields when foliage is wet.",
+    "when_to_consult_expert": "Consult an expert if rapid defoliation occurs despite regular copper or mancozeb applications."
+  },
+  "potato_late_blight": {
+    "plant": "Potato",
+    "disease_name": "Potato Late Blight",
+    "scientific_name": "Phytophthora infestans",
+    "severity": "Severe / High Alert",
+    "symptoms": "Pale green, water-soaked spots rapidly enlarging into large, dark brown to purplish-black lesions. White fungal growth observed on leaf undersides in humid conditions.",
+    "possible_causes": "Cool, humid and rainy weather (temperatures 15-20°C and relative humidity >90%). Wind-borne sporangia can spread across miles.",
+    "organic_management": "Apply preventative copper oxychloride 50% WP @ 3 g/L. Cut and burn haulms 10 days before harvesting if foliage is infected to protect tubers.",
+    "chemical_management": "Prophylactic spray of Mancozeb @ 2.5 g/L. In case of active outbreak, apply Metalaxyl 8% + Mancozeb 64% WP @ 2.5 g/L or Dimethomorph 50% WP @ 1 g/L.",
+    "prevention": "Plant certified disease-free seed tubers. Hill soil high around tuber roots to prevent spores washing down into the soil.",
+    "when_to_consult_expert": "Notify district agricultural officer immediately, as Late Blight is an aggressive community-wide epidemic threat."
+  },
+  "rice_blast": {
+    "plant": "Rice / Paddy",
+    "disease_name": "Rice Blast",
+    "scientific_name": "Magnaporthe oryzae",
+    "severity": "High",
+    "symptoms": "Spindle-shaped or diamond-shaped lesions with gray/whitish centers and dark reddish-brown borders on leaves; neck rot causes broken panicles and chaffy grains.",
+    "possible_causes": "Excessive nitrogen fertilizer application, cloudy skies with light drizzles, high relative humidity (>90%) and night temperatures around 20°C.",
+    "organic_management": "Apply Pseudomonas fluorescens @ 10 g/L of water. Spray fermented cow urine and neem extract (10%). Avoid excess nitrogenous fertilizers.",
+    "chemical_management": "Spray Tricyclazole 75% WP @ 0.6 g/L or Isoprothiolane 40% EC @ 1.5 ml/L at boot leaf to early heading stage.",
+    "prevention": "Adopt balanced N:P:K fertilization (avoid excessive Urea). Use blast-resistant varieties like IR64, MTU1010, or Swarna.",
+    "when_to_consult_expert": "Consult agricultural extension officer if neck blast symptoms appear before grain filling is complete."
+  },
+  "cotton_leaf_curl": {
+    "plant": "Cotton",
+    "disease_name": "Cotton Leaf Curl Virus (CLCuD)",
+    "scientific_name": "Begomovirus transmitted by Bemisia tabaci",
+    "severity": "High",
+    "symptoms": "Upward or downward curling of leaf margins, thickening of leaf veins, and cup-shaped leaf-like enations on the undersides of leaves. Stunted growth.",
+    "possible_causes": "Heavy whitefly (Bemisia tabaci) infestation acting as viral vectors, warm humid conditions, nearby weed hosts.",
+    "organic_management": "Install yellow sticky traps @ 15-20 per acre. Spray neem oil (1500 ppm) @ 5 ml/L. Conserve natural predators like ladybird beetles and lacewings.",
+    "chemical_management": "Control whitefly vector using Diafenthiuron 50% WP @ 1.2 g/L or Spiromesifen 22.9% SC @ 1 ml/L or Flonicamid 50% WG @ 0.3 g/L.",
+    "prevention": "Cultivate CLCuD-resistant Bt cotton hybrids. Eradicate weed hosts like Kanghi (Abutilon indicum) and gutputi from field borders.",
+    "when_to_consult_expert": "Consult crop scientist if viral curl appears during early vegetative phase before flowering."
+  },
+  "citrus_canker": {
+    "plant": "Citrus / Lemon / Orange",
+    "disease_name": "Citrus Canker",
+    "scientific_name": "Xanthomonas citri subsp. citri",
+    "severity": "Moderate",
+    "symptoms": "Raised, corky, crater-like lesions surrounded by an oily or water-soaked yellow halo on leaves, twigs, and fruits. Premature fruit drop.",
+    "possible_causes": "Wind-driven rain, leaf miner damage providing entry points for the bacterium, high temperatures (25-35°C).",
+    "organic_management": "Prune cankered twigs during dry weather and apply Bordeaux paste (1%) to cut ends. Spray neem cake extract.",
+    "chemical_management": "Spray Copper Oxychloride 50% WP @ 3 g/L combined with Streptocycline @ 100 ppm (1 g in 10 L water) at 15-day intervals.",
+    "prevention": "Erect windbreaks around orchard borders. Control citrus leaf miner during new flush periods with neem oil.",
+    "when_to_consult_expert": "Consult horticulturist if canker spreads rapidly onto mature tree trunks or young graftings."
+  },
+  "healthy_plant": {
+    "plant": "Agricultural Crop",
+    "disease_name": "Healthy Foliage",
+    "scientific_name": "No Pathogen Detected",
+    "severity": "None (Healthy)",
+    "symptoms": "Leaves exhibit uniform vibrant green coloration, intact cellular structure, clean leaf margins, and absence of necrotic lesions, chlorosis, or fungal mycelium.",
+    "possible_causes": "Adequate nutrition, optimum soil moisture, effective pest monitoring, and favorable microclimatic conditions.",
+    "organic_management": "Maintain balanced organic soil nutrition with vermicompost and compost tea. Monitor soil moisture regularly.",
+    "chemical_management": "No chemical application required. Continue regular scouting and preventive care.",
+    "prevention": "Continue standard integrated pest management (IPM) and balanced irrigation practices.",
+    "when_to_consult_expert": "Regular seasonal soil and leaf tissue testing is recommended every 1-2 years."
+  }
+}
+
