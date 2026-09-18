@@ -27,5 +27,6 @@ router.register(r'prices', PriceDataViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('reports/', include('reports.urls')),
+
 ]
