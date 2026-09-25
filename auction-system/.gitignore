@@ -1,0 +1,32 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+env/
+.env
+*.sqlite3
+staticfiles/
+media/
+
+# React
+auction-frontend/node_modules/
+auction-frontend/build/
+auction-frontend/.env.local
+auction-frontend/.env.development.local
+auction-frontend/.env.test.local
+auction-frontend/.env.production.local
+auction-frontend/npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
