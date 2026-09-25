@@ -1,2 +1,0 @@
-# diseases package
-

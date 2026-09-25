@@ -1,2 +1,0 @@
-"""AgriSmart Configuration Package"""
-

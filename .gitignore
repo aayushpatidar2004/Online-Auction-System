@@ -1,51 +1,32 @@
-# Python & Virtualenv
+# Python / Django
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
+*.pyo
+*.pyd
 *.egg-info/
-.installed.cfg
-*.egg
-
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-/media/
-
-# Environment variables
-.env
-
-# Node.js
-node_modules/
 dist/
-dist-ssr/
-*.local
+build/
+.eggs/
+venv/
+env/
+.env
+*.sqlite3
+staticfiles/
+media/
 
-# IDEs
-.idea/
+# React
+auction-frontend/node_modules/
+auction-frontend/build/
+auction-frontend/.env.local
+auction-frontend/.env.development.local
+auction-frontend/.env.test.local
+auction-frontend/.env.production.local
+auction-frontend/npm-debug.log*
+
+# IDE
 .vscode/
+.idea/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
-
