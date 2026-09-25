@@ -11,6 +11,7 @@ channels==4.0.0
 channels-redis==4.1.0
 gunicorn==20.1.0
 whitenoise==6.4.0
+dj-database-url==2.2.0
+djangorestframework-simplejwt==5.2.2
 # Install mysqlclient only if MySQL development headers are available on the machine.
 # mysqlclient==2.1.1
-djangorestframework-simplejwt==5.2.2

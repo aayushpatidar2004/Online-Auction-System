@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,7 +10,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-auction-dev-key-change-in-prod')
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+render_hostname = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0,testserver').split(',') if host.strip()]
+if render_hostname:
+    ALLOWED_HOSTS.append(render_hostname)
 if 'testserver' not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append('testserver')
 if DEBUG and '*' not in ALLOWED_HOSTS:
@@ -67,8 +71,24 @@ WSGI_APPLICATION = 'auction_backend.wsgi.application'
 
 # Database configuration - Supports MySQL as specified with seamless dev fallback
 DB_ENGINE = os.getenv('DB_ENGINE', 'sqlite').lower()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
-if DB_ENGINE == 'mysql' or os.getenv('USE_MYSQL', 'false').lower() == 'true':
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    }
+elif DB_ENGINE == 'postgres' or os.getenv('USE_POSTGRES', 'false').lower() == 'true':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME', 'auction_db'),
+            'USER': os.getenv('DB_USER', 'postgres'),
+            'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+        }
+    }
+elif DB_ENGINE == 'mysql' or os.getenv('USE_MYSQL', 'false').lower() == 'true':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
