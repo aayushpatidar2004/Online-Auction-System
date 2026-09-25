@@ -1,258 +1,184 @@
-# 🔨 AuctionHub — Full Stack Auction System
+# Project Online Auction System
 
-A complete real-time auction platform built with **Django REST Framework** (backend) and **React** (frontend).
+A full-stack online auction platform built with Django REST Framework on the backend and React on the frontend. It allows users to register, create auctions, place bids, track bid history, and complete payments in a modern marketplace-style interface.
 
----
+## Features
 
-## 🏗️ Architecture
+- User registration and authentication
+- JWT-based login and protected API routes
+- Auction creation, editing, and deletion
+- Live bidding and highest-bid tracking
+- Bid history and auction detail views
+- Seller and buyer profile management
+- Stripe-ready payment flow
+- Responsive React frontend
+- Admin-ready Django backend
 
-```
+## Tech Stack
+
+- Backend: Python, Django, Django REST Framework
+- Authentication: JWT (SimpleJWT)
+- Frontend: React, React Router, Redux Toolkit
+- HTTP Client: Axios
+- Styling: CSS
+- Database: SQLite for development, MySQL-ready configuration for production
+- Deployment: Django + React static build support, Vercel/Render/Heroku friendly
+
+## Project Structure
+
+```bash
 auction-system/
-├── auction_backend/        # Django project
-│   ├── users/              # CustomUser model + auth
-│   ├── auctions/           # Auction model + bidding logic
-│   ├── bids/               # Bid model
-│   └── payments/           # Payment model (Stripe-ready)
-├── auction-frontend/       # React SPA
-│   └── src/
-│       ├── components/     # React components
-│       ├── services/api.js # Axios API client
-│       └── store/          # Redux Toolkit state
+├── auction_backend/         # Django project settings and URLs
+├── auctions/                # Auction models, serializers, views
+├── bids/                    # Bid logic and models
+├── users/                   # User authentication and profiles
+├── payments/                # Payment integration logic
+├── auction-frontend/        # React frontend
+│   ├── public/
+│   ├── src/
+│   ├── package.json
+│   └── vercel.json
+├── manage.py
 ├── requirements.txt
-└── .env.example
+├── .env.example
+├── .gitignore
+├── Procfile
+├── db.sqlite3
+├── README.md
+└── verify_system.py
 ```
 
----
+## Prerequisites
 
-## ⚡ Quick Start
+Before running the project, make sure you have:
 
-### Prerequisites
 - Python 3.10+
 - Node.js 18+
+- npm or yarn
 - Git
 
-### 1. Clone & Backend Setup
+## Backend Setup
+
+1. Open a terminal in the project root.
+2. Create and activate a virtual environment:
 
 ```bash
-# Navigate into the project
 cd auction-system
-
-# Create virtual environment
 python -m venv venv
-
-# Activate (Windows)
 venv\Scripts\activate
-# Activate (Mac/Linux)
-source venv/bin/activate
+```
 
-# Install dependencies
+3. Install Python dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-# Copy environment file
-copy .env.example .env   # Windows
-cp .env.example .env     # Mac/Linux
+4. Configure environment variables:
 
-# Run migrations
-python manage.py makemigrations
+```bash
+copy .env.example .env
+```
+
+5. Run migrations:
+
+```bash
 python manage.py migrate
+```
 
-# Create superuser (for admin panel)
+6. Create an admin user:
+
+```bash
 python manage.py createsuperuser
+```
 
-# Start backend server
+7. Start the backend server:
+
+```bash
 python manage.py runserver
 ```
-Backend runs at: **http://localhost:8000**
-Admin panel: **http://localhost:8000/admin**
 
-### 2. Frontend Setup
+The backend will run at:
+
+- http://localhost:8000
+- Django admin: http://localhost:8000/admin
+
+## Frontend Setup
+
+Open a second terminal and run:
 
 ```bash
-# In a new terminal
-cd auction-system
-
-# Create React app (first time only)
-npx create-react-app auction-frontend
-
-# Copy component files into auction-frontend/src/
-# (all files are already created in auction-frontend/)
-
-# Install dependencies
-cd auction-frontend
+cd auction-system/auction-frontend
 npm install
-
-# Start frontend
 npm start
 ```
-Frontend runs at: **http://localhost:3000**
 
----
+The frontend will run at:
 
-## 📡 API Endpoints
+- http://localhost:3000
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/users/register/` | No | Register new user |
-| POST | `/api/token/` | No | Login → get JWT |
-| POST | `/api/token/refresh/` | No | Refresh access token |
-| GET | `/api/users/profile/` | Yes | Get own profile |
-| PATCH | `/api/users/profile/` | Yes | Update profile |
-| GET | `/api/auctions/` | No | List all auctions |
-| POST | `/api/auctions/` | Yes | Create auction |
-| GET | `/api/auctions/{id}/` | No | Auction detail |
-| PATCH | `/api/auctions/{id}/` | Yes | Update auction |
-| DELETE | `/api/auctions/{id}/` | Yes | Delete auction |
-| POST | `/api/auctions/{id}/place_bid/` | Yes | Place a bid |
-| GET | `/api/auctions/{id}/bid_history/` | No | Bid history |
-| GET | `/api/auctions/my_auctions/` | Yes | My listed auctions |
-| GET | `/api/auctions/my_bids/` | Yes | Auctions I've bid on |
-| POST | `/api/payments/initiate/` | Yes | Initiate payment |
-| GET | `/api/payments/` | Yes | My payments |
+## Environment Variables
 
-### Example: Place a Bid
-```bash
-curl -X POST http://localhost:8000/api/auctions/1/place_bid/ \
-  -H "Authorization: Bearer <your_token>" \
-  -H "Content-Type: application/json" \
-  -d '{"bid_amount": 150.00}'
-```
-
----
-
-## 🗄️ Database Models
-
-### CustomUser
-| Field | Type | Notes |
-|-------|------|-------|
-| username | CharField | Unique |
-| email | EmailField | |
-| phone | CharField | Unique, optional |
-| seller_rating | DecimalField | 0.00–5.00 |
-| buyer_rating | DecimalField | 0.00–5.00 |
-| wallet_balance | DecimalField | |
-| profile_image | ImageField | Optional |
-| created_at | DateTimeField | Auto |
-
-### Auction
-| Field | Type | Notes |
-|-------|------|-------|
-| seller | FK → CustomUser | |
-| title | CharField | |
-| description | TextField | |
-| category | CharField | electronics/fashion/home/etc |
-| condition | CharField | new/used |
-| base_price | DecimalField | |
-| current_highest_bid | DecimalField | Auto-updated on bid |
-| highest_bidder | FK → CustomUser | Nullable |
-| start_time | DateTimeField | |
-| end_time | DateTimeField | |
-| status | CharField | active/ended/cancelled |
-| image | ImageField | Optional |
-
-### Bid
-| Field | Type | Notes |
-|-------|------|-------|
-| auction | FK → Auction | |
-| bidder | FK → CustomUser | |
-| bid_amount | DecimalField | Must exceed current_highest_bid |
-| auto_bid_limit | DecimalField | Optional auto-bidding cap |
-| created_at | DateTimeField | |
-
-### Payment
-| Field | Type | Notes |
-|-------|------|-------|
-| auction | OneToOneField → Auction | |
-| buyer | FK → CustomUser | |
-| amount | DecimalField | |
-| payment_id | CharField | Stripe payment intent ID |
-| status | CharField | pending/completed/failed |
-
----
-
-## 🌐 Deployment
-
-### Backend → Render / Railway / Heroku
-```bash
-# create .env or set environment variables in hosting platform
-SECRET_KEY=your-production-secret-key
-DEBUG=False
-ALLOWED_HOSTS=your-backend-domain.com
-CORS_ALLOWED_ORIGINS=https://your-frontend-domain.com
-CSRF_TRUSTED_ORIGINS=https://your-frontend-domain.com
-
-python manage.py migrate
-python manage.py collectstatic --noinput
-python manage.py createsuperuser
-```
-
-### Frontend → Vercel / Netlify
-```bash
-cd auction-frontend
-# Add environment variable for the live backend URL
-# REACT_APP_API_URL=https://your-backend-domain.com/api
-npm install
-npm run build
-```
-
-### Full production setup
-- backend serves the Django API and static frontend files from the same app
-- frontend can also be hosted separately, but the API base URL must point to the deployed backend
-- for a single-host deployment, keep Django and React build under the same project and serve static files with WhiteNoise
-
----
-
-## 🔧 Environment Variables
-
-Copy `.env.example` to `.env` and configure:
+Create a `.env` file in the project root using `.env.example` as a template. Example:
 
 ```env
-SECRET_KEY=your-secret-key-here
+SECRET_KEY=your-secret-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 CORS_ALLOWED_ORIGINS=http://localhost:3000
+CSRF_TRUSTED_ORIGINS=http://localhost:3000
 
-# Optional: MySQL (default is SQLite)
-# DB_NAME=auction_db
-# DB_USER=root
-# DB_PASSWORD=your_password
+DB_ENGINE=sqlite
 
-# Optional: Stripe
-# STRIPE_SECRET_KEY=sk_test_...
-# STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=
+STRIPE_PUBLISHABLE_KEY=
 ```
 
----
+## API Overview
 
-## 🧪 Testing with Postman
+The backend exposes REST API endpoints for users, auctions, bids, and payments.
 
-1. **Register**: `POST /api/users/register/` with `{username, email, password, password2}`
-2. **Login**: `POST /api/token/` → copy `access` token
-3. **Authorize**: Add header `Authorization: Bearer <token>`
-4. **Create auction**: `POST /api/auctions/` (multipart form with image)
-5. **Place bid**: `POST /api/auctions/{id}/place_bid/` with `{bid_amount: 100}`
-6. **View history**: `GET /api/auctions/{id}/bid_history/`
+### Authentication
 
----
+- POST /api/users/register/
+- POST /api/token/
+- POST /api/token/refresh/
 
-## 📦 Tech Stack
+### Users
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | Django 4.2, Django REST Framework |
-| Auth | JWT (SimpleJWT) |
-| Database | SQLite (dev) / MySQL (prod) |
-| File Storage | Django media files / Pillow |
-| Frontend | React 18, Redux Toolkit |
-| HTTP Client | Axios (with JWT interceptors) |
-| Styling | Custom CSS (dark theme) |
-| Notifications | React Toastify |
-| Deployment | Heroku (backend) + Vercel (frontend) |
+- GET /api/users/profile/
+- PATCH /api/users/profile/
 
----
+### Auctions
 
-## 🔮 Future Enhancements
-- WebSocket real-time bidding (Django Channels)
-- Full Stripe payment integration
-- Email notifications on auction end
-- Auto-bidding engine (Celery + Redis)
-- Mobile app (React Native)
+- GET /api/auctions/
+- POST /api/auctions/
+- GET /api/auctions/<id>/
+- PATCH /api/auctions/<id>/
+- DELETE /api/auctions/<id>/
+- POST /api/auctions/<id>/place_bid/
+
+### Payments
+
+- POST /api/payments/initiate/
+- GET /api/payments/
+
+## Production Notes
+
+- The Django app is configured to serve the React build when deployed.
+- Static files are collected using Whitenoise.
+- The project is ready for deployment on services such as Render, Railway, Heroku, or Vercel using the frontend API URL.
+
+## License
+
+This project is intended for educational and portfolio use.
+
+## Author
+
+Aayush Patidar
+
+## Repository
+
+GitHub repository for this project:
+
+- https://github.com/aayushpatidar2004/Project-Online-Auction-System.git
