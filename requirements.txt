@@ -13,4 +13,4 @@ gunicorn>=25.0.0
 whitenoise==6.4.0
 dj-database-url==2.2.0
 djangorestframework-simplejwt==5.2.2
-setuptools
+setuptools<81
