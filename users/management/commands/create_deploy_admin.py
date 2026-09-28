@@ -19,7 +19,15 @@ class Command(BaseCommand):
         User = get_user_model()
         user = User.objects.filter(username=username).first()
         if user:
-            self.stdout.write(f'Admin account {username!r} already exists; leaving it unchanged.')
+            user.email = email
+            user.is_active = True
+            user.is_staff = True
+            user.is_superuser = True
+            user.set_password(password)
+            user.save(update_fields=(
+                'email', 'is_active', 'is_staff', 'is_superuser', 'password',
+            ))
+            self.stdout.write(self.style.SUCCESS(f'Updated deployment admin {username!r}.'))
             return
 
         User.objects.create_superuser(username=username, email=email, password=password)
