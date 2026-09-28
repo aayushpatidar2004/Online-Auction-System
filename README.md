@@ -107,7 +107,7 @@ The backend will run at:
 - http://localhost:8000
 - Django admin: http://localhost:8000/admin
 
-On Render, open `https://online-auction-system-2-5eum.onrender.com/admin/`. Create a production admin account from the Render service Shell with `python manage.py createsuperuser`; the local development account is stored in a different database.
+On Render, open `https://online-auction-system-2-5eum.onrender.com/admin/`. To create the initial production admin on a Free service, set `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_EMAIL`, and `DJANGO_SUPERUSER_PASSWORD` in Render's environment. The `create_deploy_admin` management command creates the account during the build if it does not exist. Remove the password variable after deployment; the local development account is stored in a different database.
 
 ## Frontend Setup
 
