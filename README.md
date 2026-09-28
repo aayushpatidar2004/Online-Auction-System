@@ -107,6 +107,8 @@ The backend will run at:
 - http://localhost:8000
 - Django admin: http://localhost:8000/admin
 
+On Render, open `https://online-auction-system-2-5eum.onrender.com/admin/`. Create a production admin account from the Render service Shell with `python manage.py createsuperuser`; the local development account is stored in a different database.
+
 ## Frontend Setup
 
 Open a second terminal and run:
