@@ -172,6 +172,7 @@ The backend exposes REST API endpoints for users, auctions, bids, and payments.
 - The Django app is configured to serve the React build when deployed.
 - Static files are collected using Whitenoise.
 - The project is ready for deployment on services such as Render, Railway, Heroku, or Vercel using the frontend API URL.
+- For persistent uploaded images on Render, set `CLOUDINARY_URL` in the Render backend environment. Django uses Cloudinary for new media uploads when this variable is present; without it, local uploads continue to use `MEDIA_ROOT`.
 
 ## License
 
