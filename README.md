@@ -2,6 +2,10 @@
 
 A full-stack online auction platform built with Django REST Framework on the backend and React on the frontend. It allows users to register, create auctions, place bids, track bid history, and complete payments in a modern marketplace-style interface.
 
+## Live Demo
+
+- https://online-auction-system-five.vercel.app/
+
 ## Features
 
 - User registration and authentication
