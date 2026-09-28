@@ -125,19 +125,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'auction-frontend' / 'build' / 'static',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Use Cloudinary for uploaded media when CLOUDINARY_URL is configured (e.g. on Render).
-# Local development continues to store uploads in MEDIA_ROOT.
-if os.getenv('CLOUDINARY_URL'):
-    STORAGES = {
-        'default': {
-            'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
-        },
-        'staticfiles': {
-            'BACKEND': STATICFILES_STORAGE,
-        },
-    }
+# Django 4.2 uses STORAGES for both uploaded media and static files.
+# Use Cloudinary for media when configured; otherwise keep local MEDIA_ROOT storage.
+STORAGES = {
+    'default': {
+        'BACKEND': (
+            'cloudinary_storage.storage.MediaCloudinaryStorage'
+            if os.getenv('CLOUDINARY_URL')
+            else 'django.core.files.storage.FileSystemStorage'
+        ),
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
