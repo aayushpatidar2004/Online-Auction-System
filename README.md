@@ -181,4 +181,4 @@ Aayush Patidar
 
 GitHub repository for this project:
 
-- https://github.com/aayushpatidar2004/Project-Online-Auction-System.git
+- https://github.com/aayushpatidar2004/Online-Auction-System
