@@ -8,7 +8,7 @@ import { formatINR } from '../utils/formatters';
 const getMediaUrl = (path) => {
   if (!path) return null;
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:8000/api').replace(/\/api$/, '');
+  const baseUrl = (process.env.REACT_APP_API_URL || `${window.location.origin}/api`).replace(/\/api$/, '');
   return `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
 };
 
